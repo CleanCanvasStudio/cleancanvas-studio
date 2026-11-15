@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CleanCanvas Studio | Web, Graphic & Space Design</title>
+  <style>
+    :root {
+      --bg: #0f172a;
+      --card: #1e293b;
+      --accent: #38bdf8;
+      --accent-hover: #0284c7;
+      --text: #f8fafc;
+      --muted: #94a3b8;
+      --border: #334155;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    header {
+      background: rgba(15, 23, 42, 0.9);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
+      padding: 1rem 5%;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 1.3rem;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      color: var(--text);
+    }
+
+    .logo span {
+      color: var(--accent);
+    }
+
+    nav a {
+      color: var(--muted);
+      text-decoration: none;
+      margin-left: 1.2rem;
+      font-size: 0.95rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+
+    nav a:hover {
+      color: var(--accent);
+    }
+
+    .hero {
+      text-align: center;
+      padding: 4.5rem 6% 3.5rem;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .badge {
+      display: inline-block;
+      background: rgba(56, 189, 248, 0.15);
+      color: var(--accent);
+      padding: 0.35rem 0.9rem;
+      border-radius: 999px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+      border: 1px solid rgba(56, 189, 248, 0.3);
+    }
+
+    .hero h1 {
+      font-size: 2.5rem;
+      line-height: 1.2;
+      margin-bottom: 1rem;
+      font-weight: 800;
+    }
+
+    .hero p {
+      color: var(--muted);
+      font-size: 1.1rem;
+      margin-bottom: 2rem;
+    }
+
+    .btn {
+      display: inline-block;
+      background: var(--accent);
+      color: #0f172a;
+      padding: 0.85rem 1.8rem;
+      border-radius: 8px;
+      font-weight: 700;
+      text-decoration: none;
+      transition: background 0.2s, transform 0.2s;
+    }
+
+    .btn:hover {
+      background: var(--accent-hover);
+      color: #fff;
+      transform: translateY(-2px);
+    }
+
+    section {
+      padding: 3.5rem 6%;
+      max-width: 1050px;
+      margin: 0 auto;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: 1.9rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .section-subtitle {
+      text-align: center;
+      color: var(--muted);
+      margin-bottom: 2.5rem;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 1.8rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform 0.2s, border-color 0.2s;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      border-color: var(--accent);
+    }
+
+    .card h3 {
+      font-size: 1.3rem;
+      margin-bottom: 0.6rem;
+    }
+
+    .card p {
+      color: var(--muted);
+      font-size: 0.95rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .price {
+      font-size: 1.4rem;
+      font-weight: 800;
+      color: var(--accent);
+      padding-top: 1rem;
+      border-top: 1px solid var(--border);
+    }
+
+    .sample-tag {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.5rem;
+      letter-spacing: 0.5px;
+    }
+
+    .step-num {
+      display: inline-block;
+      background: var(--accent);
+      color: #0f172a;
+      width: 30px;
+      height: 30px;
+      line-height: 30px;
+      text-align: center;
+      border-radius: 50%;
+      font-weight: 800;
+      margin-bottom: 0.8rem;
+    }
+
+    .pay-badges {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.75rem;
+      margin-top: 1.5rem;
+    }
+
+    .pay-pill {
+      background: rgba(56, 189, 248, 0.12);
+      border: 1px solid rgba(56, 189, 248, 0.35);
+      color: var(--accent);
+      padding: 0.45rem 1rem;
+      border-radius: 999px;
+      font-size: 0.9rem;
+      font-weight: 600;
+    }
+
+    .contact-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 2.5rem 1.8rem;
+      text-align: center;
+      max-width: 680px;
+      margin: 0 auto;
+    }
+
+    .contact-card h2 {
+      margin-bottom: 0.8rem;
+    }
+
+    .contact-card p {
+      color: var(--muted);
+      margin-bottom: 1.5rem;
+    }
+
+    .small-note {
+      font-size: 0.85rem;
+      color: var(--muted);
+      margin-top: 1.2rem;
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem;
+      color: var(--muted);
+      font-size: 0.9rem;
+      border-top: 1px solid var(--border);
+      margin-top: 2rem;
+    }
+
+    @media (max-width: 600px) {
+      .hero h1 {
+        font-size: 2rem;
+      }
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="logo">Clean<span>Canvas</span> Studio</div>
+    <nav>
+      <a href="#services">Services</a>
+      <a href="#samples">Samples</a>
+      <a href="#how-it-works">How to Pay</a>
+      <a href="#contact">Order Now</a>
+    </nav>
+  </header>
+
+  <div class="hero">
+    <div class="badge">Digital Design • Web • Space Layouts</div>
+    <h1>Clean, Modern Designs Built For Your Ideas</h1>
+    <p>Polished Canva graphics, custom one-page websites, and digital room makeover layouts—crafted with care and delivered fast.</p>
+    <a href="#services" class="btn">View Services & Pricing</a>
+  </div>
+
+  <section id="services">
+    <h2 class="section-title">Services & Pricing</h2>
+    <p class="section-subtitle">Simple, transparent pricing with zero hidden fees.</p>
+
+    <div class="grid">
+      <div class="card">
+        <div>
+          <h3>Polished Canva Designs</h3>
+          <p>Custom birthday invitations, party posters, festival greetings, logos, and QR menus delivered ready to print or share online.</p>
+        </div>
+        <div class="price">₹150 – ₹300</div>
+      </div>
+
+      <div class="card">
+        <div>
+          <h3>Custom Websites</h3>
+          <p>Clean, mobile-friendly one-page websites for home businesses, tutors, portfolios, or special events.</p>
+        </div>
+        <div class="price">₹200 – ₹300+</div>
+      </div>
+
+      <div class="card">
+        <div>
+          <h3>House & Room Designs</h3>
+          <p>Digital 2D floor plans, bedroom or living room layout ideas, and makeover mood boards created in Canva.</p>
+        </div>
+        <div class="price">₹200 – ₹350</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="samples">
+    <h2 class="section-title">What We Can Create</h2>
+    <p class="section-subtitle">Examples of custom projects you can order today.</p>
+
+    <div class="grid">
+      <div class="card">
+        <div>
+          <span class="sample-tag">Graphic Design</span>
+          <h3>Event & Business Kits</h3>
+          <p>Eye-catching digital invites, Instagram flyers, and scannable restaurant menus tailored to your brand colors.</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <div>
+          <span class="sample-tag">Web Design</span>
+          <h3>Fast Mobile Sites</h3>
+          <p>Modern landing pages that load quickly on any phone, complete with direct WhatsApp or email booking buttons.</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <div>
+          <span class="sample-tag">Space Planning</span>
+          <h3>Room Makeover Layouts</h3>
+          <p>Easy-to-follow furniture placement guides and color palettes to refresh your bedroom, study, or living space.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="how-it-works">
+    <h2 class="section-title">How Ordering & Payment Works</h2>
+    <p class="section-subtitle">Safe, simple steps from your idea to the finished file.</p>
+
+    <div class="grid">
+      <div class="card">
+        <div>
+          <div class="step-num">1</div>
+          <h3>Send Your Idea</h3>
+          <p>Email us what you need (a Canva design, a website, or a room layout) along with any colors or text you want.</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <div>
+          <div class="step-num">2</div>
+          <h3>Review Your Preview</h3>
+          <p>We create your design and send you a preview image first so you can make sure you love how it looks.</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <div>
+          <div class="step-num">3</div>
+          <h3>Pay & Get Final Files</h3>
+          <p>Once you approve the preview, complete payment via our parent-managed account and receive your clean, high-quality files.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="pay-badges">
+      <span class="pay-pill">UPI (GPay / PhonePe / Paytm)</span>
+      <span class="pay-pill">Bank Transfer (IMPS / NEFT)</span>
+      <span class="pay-pill">Amazon Pay Gift Cards</span>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="contact-card">
+      <h2>Ready to Start a Project?</h2>
+      <p>Tap below to send us your idea, preferred colors, and deadline. We reply quickly with a preview plan.</p>
+      <a href="mailto:Clean_CanvasStudio@://gmail.com:" class="btn">Email Your Project Idea</a>
